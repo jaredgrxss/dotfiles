@@ -1,38 +1,6 @@
 -- lsp.lua file
 
 -- Initialize mason.nvim
--- require('mason').setup()
-
--- Setup mason-lspconfig
--- require('mason-lspconfig').setup({
---	ensure_installed = { 'pyright', 'ts_ls', 'rust_analyzer', 'lua_ls', 'solargraph', 'ruby_lsp' },
---})
-
--- Setup lspconfig with mason-lspconfig
---local lspconfig = require('lspconfig')
-
-
--- Configure LSP servers with mason-lspconfig
--- lspconfig.pyright.setup({})  -- Python
--- lspconfig.ts_ls.setup({})  -- JavaScript/TypeScript
--- lspconfig.rust_analyzer.setup({})  -- Rust
--- lspconfig.lua_ls.setup({})  -- Lua
--- lspconfig.solargraph.setup({
---	settings = {
---		solargraph = {
---			diagnostics = true,
---			formatting = true,
---			autoformat = true,
---		},
---	},
--- })
--- lspconfig.ruby_lsp.setup({
-	-- Basic configuration
---	cmd = { 'ruby-lsp' },
--- })
-
-
--- Initialize mason.nvim
 require('mason').setup()
 
 -- Setup mason-lspconfig
