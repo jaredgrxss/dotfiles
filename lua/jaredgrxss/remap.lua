@@ -2,7 +2,9 @@ vim.g.mapleader = " "
 -- File explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 -- Open a terminal vertically next to current window
-vim.keymap.set("n", "<leader>vst", ":vsplit<CR>", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>vst", function()
+    vim.cmd("vsplit | terminal")
+end, { desc = "Split window vertically" })
 -- Exit insert mode in a terminal
 vim.keymap.set('t', '<Esc>', '<Cmd>stopinsert<CR>', { desc = 'Exit insert mode in terminal' })
 
@@ -63,3 +65,18 @@ vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>", { desc = "Reload vim c
 
 -- Always make nvim directory the working one 
 vim.g.netrw_keepdir = 0
+
+-- LSP Keymaps
+vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Find references" })
+vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Go to type definition" })
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
+vim.keymap.set("n", "<leader>lh", vim.lsp.buf.signature_help, { desc = "Show signature help" })
+vim.keymap.set("n", "<leader>lf", function()
+    vim.lsp.buf.format({ async = true })
+end, { desc = "Format code" })
+
+-- Hover documentation (like VSCode hover tooltips)
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover for documentation" })
