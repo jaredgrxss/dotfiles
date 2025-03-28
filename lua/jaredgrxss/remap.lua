@@ -1,6 +1,26 @@
 vim.g.mapleader = " "
 -- File explorer
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>pv", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
+-- Locate current file in tree
+vim.keymap.set("n", "<leader>pp", ":NvimTreeFindFile<CR>", { desc = "Find current file in tree" })
+-- ============================================================================
+-- nvim-tree keybinding cheatsheet (inside the tree window)
+-- ============================================================================
+-- a       Create a new file or folder (append / to make folder)
+-- d       Delete selected file or folder
+-- r       Rename file or folder
+-- x       Cut file or folder
+-- y       Copy file or folder
+-- p       Paste into directory
+-- m       Move (rename path)
+-- c       Copy name or path to clipboard
+-- gh      Toggle hidden files (dotfiles)
+-- R       Refresh the tree
+-- ]c / [c Navigate to next/prev Git change
+-- ?       Toggle help popup inside the tree
+-- ============================================================================
+
+-- Tip: You need to be *inside the nvim-tree window* for these to work.
 -- Open a terminal vertically next to current window
 vim.keymap.set("n", "<leader>vst", function()
     vim.cmd("vsplit | terminal")
@@ -20,8 +40,25 @@ vim.keymap.set('n', '<leader>k', '<C-w>k', { desc = 'Move to top window' })
 -- Shift to the right window
 vim.keymap.set('n', '<leader>l', '<C-w>l', { desc = 'Move to right window' })
 
--- Line numbers
+-- Don't wrap lines
+vim.opt.wrap = false
+
+-- Line numbers + relative 
 vim.wo.number = true
+vim.opt.relativenumber = true
+
+-- Swap file stuff 
+local home = os.getenv("HOME") or os.getenv("USERPROFILE") -- Fallback to USERPROFILE on Windows
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = home .. "/.vim/undodir"
+vim.opt.undofile = true
+
+-- Good colors 
+vim.opt.termguicolors = true
+
+-- Buffer some characters at the top
+vim.opt.scrolloff = 8
 
 -- Enable virtualedit to allow moving the cursor after the word
 vim.o.virtualedit = "onemore"

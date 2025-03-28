@@ -6,7 +6,7 @@ require('mason').setup()
 
 -- Setup mason-lspconfig
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pyright', 'ts_ls', 'rust_analyzer', 'lua_ls', 'solargraph', 'ruby_lsp' },
+    ensure_installed = { 'pyright', 'ts_ls', 'rust_analyzer', 'lua_ls', 'ruby_lsp' },
 })
 
 -- Import lspconfig
@@ -37,12 +37,12 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'solargraph' }
   }, {
     { name = 'buffer' },
   })
 })
 
--- Autocompleting Parenthesis Setup
 require('nvim-autopairs').setup({})
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on(
@@ -50,7 +50,6 @@ cmp.event:on(
   cmp_autopairs.on_confirm_done()
 )
 
--- 🔹 Python LSP Config (pyright)
 lspconfig.pyright.setup(vim.tbl_extend("force", default_lsp_settings, {
     settings = {
         python = {
@@ -64,7 +63,6 @@ lspconfig.pyright.setup(vim.tbl_extend("force", default_lsp_settings, {
     },
 }))
 
--- 🔹 JavaScript/TypeScript LSP Config (tsserver)
 lspconfig.ts_ls.setup(vim.tbl_extend("force", default_lsp_settings, {
     settings = {
         completions = { completeFunctionCalls = true },  -- Autocomplete function calls with parentheses
@@ -78,7 +76,6 @@ lspconfig.ts_ls.setup(vim.tbl_extend("force", default_lsp_settings, {
     },
 }))
 
--- 🔹 Rust LSP Config (rust_analyzer)
 lspconfig.rust_analyzer.setup(vim.tbl_extend("force", default_lsp_settings, {
     settings = {
         ["rust-analyzer"] = {
@@ -90,7 +87,6 @@ lspconfig.rust_analyzer.setup(vim.tbl_extend("force", default_lsp_settings, {
     },
 }))
 
--- 🔹 Lua LSP Config (lua_ls)
 lspconfig.lua_ls.setup(vim.tbl_extend("force", default_lsp_settings, {
     settings = {
         Lua = {
@@ -102,31 +98,12 @@ lspconfig.lua_ls.setup(vim.tbl_extend("force", default_lsp_settings, {
     },
 }))
 
--- 🔹 Ruby with Solargraph LSP Config (solargraph)
-lspconfig.solargraph.setup(vim.tbl_extend("force", default_lsp_settings, {
-    settings = {
-        solargraph = {
-            diagnostics = true,
-            formatting = true,
-            autoformat = true,
-            completion = true,
-            folding = true,
-            references = true,
-            hover = true,
-        },
-    },
-}))
-
--- 🔹 Ruby LSP Config (ruby_lsp)
 lspconfig.ruby_lsp.setup(vim.tbl_extend("force", default_lsp_settings, {
-    cmd = { 'ruby-lsp' },  -- Ensure ruby-lsp is being called correctly
-    settings = {
-        rubyLsp = {
-            formatter = "rubocop",  -- Use RuboCop for autoformatting
-            lint = true,
-            diagnostics = true,
-            completion = true,
-            semanticHighlighting = true,
-        },
+    cmd = { "ruby-lsp" },
+    init_options = {
+        formatter = true,
+        diagnostics = true,
+        symbolInclusion = { all = true },
     },
+    root_dir = lspconfig.util.root_pattern("Gemfile", ".git")
 }))

@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
 	}
 	-- Colorscheme
 	use({ "catppuccin/nvim", as = "catppuccin" })
+    use({"rebelot/kanagawa.nvim"})
 	-- Treesitter
 	use('nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
 	-- Playground for treesitter 
@@ -44,5 +45,10 @@ return require('packer').startup(function(use)
 
     -- commenting out multiple lines
     use({'tpope/vim-commentary'})
+    -- file explorer
+    use({
+        'nvim-tree/nvim-tree.lua',
+        requires = { 'nvim-tree/nvim-web-devicons' }
+    })
 end)
 
