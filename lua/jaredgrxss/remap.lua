@@ -19,6 +19,13 @@ vim.keymap.set("n", "<leader>pp", ":NvimTreeFindFile<CR>", { desc = "Find curren
 -- ]c / [c Navigate to next/prev Git change
 -- ?       Toggle help popup inside the tree
 -- ============================================================================
+-- Folding
+vim.keymap.set("n", "<leader>f", "za", { desc = "Toggle fold" })
+vim.keymap.set("n", "<leader>fo", "zR", { desc = "Open all folds" })
+vim.keymap.set("n", "<leader>fc", "zM", { desc = "Close all folds" })
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = true
+vim.opt.foldlevel = 99 -- Open all folds by default
 
 -- Tip: You need to be *inside the nvim-tree window* for these to work.
 -- Open a terminal vertically next to current window
