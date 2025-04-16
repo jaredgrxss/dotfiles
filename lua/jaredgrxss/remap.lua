@@ -32,6 +32,10 @@ vim.opt.foldlevel = 99 -- Open all folds by default
 vim.keymap.set("n", "<leader>vst", function()
     vim.cmd("vsplit | terminal")
 end, { desc = "Split window vertically" })
+-- Open another terminal
+vim.keymap.set("n", "<leader>vsc", function()
+    vim.cmd("vsplit | enew")
+end, { desc = "Split window vertically" })
 -- Exit insert mode in a terminal
 vim.keymap.set('t', '<Esc>', '<Cmd>stopinsert<CR>', { desc = 'Exit insert mode in terminal' })
 
