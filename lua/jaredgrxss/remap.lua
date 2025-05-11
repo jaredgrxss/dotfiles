@@ -19,6 +19,10 @@ vim.keymap.set("n", "<leader>pp", ":NvimTreeFindFile<CR>", { desc = "Find curren
 -- ]c / [c Navigate to next/prev Git change
 -- ?       Toggle help popup inside the tree
 -- ============================================================================
+-- Focus the file tree
+vim.keymap.set('n', '<leader>fe', function()
+    require('nvim-tree.api').tree.focus()
+end, { desc = 'Focus the file tree'})
 -- Folding
 vim.keymap.set("n", "<leader>f", "za", { desc = "Toggle fold" })
 vim.keymap.set("n", "<leader>fo", "zR", { desc = "Open all folds" })

@@ -6,7 +6,7 @@ require('mason').setup()
 
 -- Setup mason-lspconfig
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pyright', 'ts_ls', 'rust_analyzer', 'lua_ls', 'ruby_lsp' },
+    ensure_installed = { 'pyright', 'ts_ls', 'rust_analyzer', 'lua_ls', 'ruby_lsp', 'gopls' },
 })
 
 -- Import lspconfig
@@ -106,4 +106,20 @@ lspconfig.ruby_lsp.setup(vim.tbl_extend("force", default_lsp_settings, {
         symbolInclusion = { all = true },
     },
     root_dir = lspconfig.util.root_pattern("Gemfile", ".git")
+}))
+
+-- Go language server setup
+lspconfig.gopls.setup(vim.tbl_extend("force", default_lsp_settings, {
+    cmd = {"gopls"},
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+                shadow = true,
+            },
+            staticcheck = true,
+            gofumpt = true,  -- Use gofumpt for stricter formatting
+        },
+    },
+    root_dir = lspconfig.util.root_pattern("go.mod", ".git"),
 }))
