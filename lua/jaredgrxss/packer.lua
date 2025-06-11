@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
 	-- Colorscheme
 	use({ "catppuccin/nvim", as = "catppuccin" })
     use({"rebelot/kanagawa.nvim"})
+    use({"EdenEast/nightfox.nvim"})
 	-- Treesitter
 	use('nvim-treesitter/nvim-treesitter', {run =  ':TSUpdate'})
 	-- Playground for treesitter 
@@ -50,5 +51,34 @@ return require('packer').startup(function(use)
         'nvim-tree/nvim-tree.lua',
         requires = { 'nvim-tree/nvim-web-devicons' }
     })
+    -- Note taking integration 
+    use({
+        "renerocksai/telekasten.nvim",
+        requires = { "nvim-telescope/telescope.nvim", "renerocksai/calendar-vim"}
+    })
+    -- Harpoon
+    use "nvim-lua/plenary.nvim"
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
+    use {
+        "ruifm/gitlinker.nvim",
+        require = "nvim-lua/plenary.nvim",
+        config = function()
+            require("gitlinker").setup({
+                opts = {
+                    remote = "origin",
+                    add_current_line_on_normal_mode = true,
+                    print_url = false,
+                    action_callback = require("gitlinker.actions").open_in_browser,
+                },
+                callbacks = {
+                    ["github.com"] = require("gitlinker.hosts").get_github_type_url,
+                }
+            })
+        end
+    }
 end)
 

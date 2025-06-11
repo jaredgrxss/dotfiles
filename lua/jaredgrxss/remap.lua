@@ -132,3 +132,57 @@ end, { desc = "Format code" })
 
 -- Hover documentation (like VSCode hover tooltips)
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover for documentation" })
+
+-- Yanking relative path for easy testing purposes
+vim.keymap.set("n", "<leader>yp", function()
+local path = vim.fn.expand("%")
+vim.fn.setreg("+", path)
+print("Copied relative path: " .. path)
+end, { desc = "Copy relative file path to clipboard" })
+-- Harpoon key commands
+-- Open Harpoon menu
+local harpoon = require("harpoon")
+-- REQUIRED
+harpoon:setup()
+-- REQUIRED
+-- Add current file to Harpoon
+vim.keymap.set("n", "<leader>ha", function()
+harpoon:list():add()
+end, { desc = "Add file to Harpoon" })
+-- Toggle quick menu (used to be `ui.toggle_quick_menu`)
+vim.keymap.set("n", "<leader>hm", function()
+harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Toggle Harpoon menu" })
+-- Navigate to files 1-4
+vim.keymap.set("n", "<leader>1", function()
+harpoon:list():select(1)
+end, { desc = "Go to Harpoon file 1" })
+vim.keymap.set("n", "<leader>2", function()
+harpoon:list():select(2)
+end, { desc = "Go to Harpoon file 2" })
+vim.keymap.set("n", "<leader>3", function()
+harpoon:list():select(3)
+end, { desc = "Go to Harpoon file 3" })
+vim.keymap.set("n", "<leader>4", function()
+harpoon:list():select(4)
+end, { desc = "Go to Harpoon file 4" })
+
+
+-- Note taking setup
+vim.keymap.set("n", "<leader>zn", "<cmd>lua require('telekasten').new_note()<CR>", { desc =
+"New note" })
+vim.keymap.set("n", "<leader>zf", "<cmd>lua require('telekasten').find_notes()<CR>", { desc =
+"Find notes" })
+vim.keymap.set("n", "<leader>zd", "<cmd>lua require('telekasten').find_daily_notes()<CR>", {
+desc = "Find daily notes" })
+vim.keymap.set("n", "<leader>zt", "<cmd>lua require('telekasten').goto_today()<CR>", { desc =
+"Today’s note" })
+vim.keymap.set("n", "<leader>zz", "<cmd>lua require('telekasten').follow_link()<CR>", { desc =
+"Follow link" })
+
+-- Github integration commands
+vim.keymap.set("n", "<leader>go", function()
+require("gitlinker").get_buf_range_url("n", {
+action_callback = require("gitlinker.actions").open_in_browser
+})
+end, { desc = "Open GitHub link for current line in browser" })

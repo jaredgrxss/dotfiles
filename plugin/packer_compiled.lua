@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["calendar-vim"] = {
+    loaded = true,
+    path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\calendar-vim",
+    url = "https://github.com/renerocksai/calendar-vim"
+  },
   catppuccin = {
     loaded = true,
     path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\catppuccin",
@@ -104,6 +109,17 @@ _G.packer_plugins = {
     path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["gitlinker.nvim"] = {
+    config = { "\27LJ\2\n‘\2\0\0\a\0\14\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\a\0005\3\3\0006\4\0\0'\6\4\0B\4\2\0029\4\5\4=\4\6\3=\3\b\0025\3\v\0006\4\0\0'\6\t\0B\4\2\0029\4\n\4=\4\f\3=\3\r\2B\0\2\1K\0\1\0\14callbacks\15github.com\1\0\1\15github.com\0\24get_github_type_url\20gitlinker.hosts\topts\1\0\2\14callbacks\0\topts\0\20action_callback\20open_in_browser\22gitlinker.actions\1\0\4$add_current_line_on_normal_mode\2\vremote\vorigin\14print_url\1\20action_callback\0\nsetup\14gitlinker\frequire\0" },
+    loaded = true,
+    path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gitlinker.nvim",
+    url = "https://github.com/ruifm/gitlinker.nvim"
+  },
+  harpoon = {
+    loaded = true,
+    path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\harpoon",
+    url = "https://github.com/ThePrimeagen/harpoon"
+  },
   ["kanagawa.nvim"] = {
     loaded = true,
     path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\kanagawa.nvim",
@@ -119,6 +135,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
+  },
+  ["nightfox.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nightfox.nvim",
+    url = "https://github.com/EdenEast/nightfox.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -170,6 +191,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["telekasten.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telekasten.nvim",
+    url = "https://github.com/renerocksai/telekasten.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "C:\\Users\\jared\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
@@ -197,6 +223,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for mason.nvim]], true)
 try_loadstring("\27LJ\2\n3\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\nmason\frequire\0", "config", "mason.nvim")
 time([[Config for mason.nvim]], false)
+-- Config for: gitlinker.nvim
+time([[Config for gitlinker.nvim]], true)
+try_loadstring("\27LJ\2\n‘\2\0\0\a\0\14\0\0216\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\a\0005\3\3\0006\4\0\0'\6\4\0B\4\2\0029\4\5\4=\4\6\3=\3\b\0025\3\v\0006\4\0\0'\6\t\0B\4\2\0029\4\n\4=\4\f\3=\3\r\2B\0\2\1K\0\1\0\14callbacks\15github.com\1\0\1\15github.com\0\24get_github_type_url\20gitlinker.hosts\topts\1\0\2\14callbacks\0\topts\0\20action_callback\20open_in_browser\22gitlinker.actions\1\0\4$add_current_line_on_normal_mode\2\vremote\vorigin\14print_url\1\20action_callback\0\nsetup\14gitlinker\frequire\0", "config", "gitlinker.nvim")
+time([[Config for gitlinker.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
